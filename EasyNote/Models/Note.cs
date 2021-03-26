@@ -17,10 +17,20 @@ namespace EasyNote.Models
 
         public string Content { get; set; }
 
+        [Required]
         [ForeignKey("Author")]
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
 
+        public NoteVM ToViewModel()
+        {
+            return new NoteVM()
+            {
+                Id = Id,
+                Title = Title,
+                Content = Content
+            };
+        }
     }
 }
